@@ -161,4 +161,5 @@ function searchName() {
             document.getElementById("list").innerHTML = content;
         }
     });
+    event.preventDefault();
 }
