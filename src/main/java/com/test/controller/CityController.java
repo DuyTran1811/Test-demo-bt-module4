@@ -37,7 +37,7 @@ public class CityController {
     public ResponseEntity<Iterable<City>> getAllCity(@RequestParam(required = false) String s) {
         String key = "%" + s + "%";
         Iterable<City> cities;
-        if ((key != null) && (key != "")) {
+        if (!(key == null) && (key == "")) {
             cities = cityService.searchByName(key);
         } else {
             cities = cityService.findAll();
