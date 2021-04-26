@@ -34,10 +34,10 @@ public class CityController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Iterable<City>> getAllCity(@RequestParam(required = false) String keyword) {
+    public ResponseEntity<Iterable<City>> getAllCity(@RequestParam(required = false) String s) {
         Iterable<City> cities;
-        if (keyword != null) {
-            cities = cityService.searchByName(keyword);
+        if ((s != null) && (s != "")) {
+            cities = cityService.searchByName(s);
         } else {
             cities = cityService.findAll();
         }
