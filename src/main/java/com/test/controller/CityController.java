@@ -34,14 +34,15 @@ public class CityController {
     }
 
     @GetMapping("/all")
+    public ResponseEntity<Iterable<City>> getAllCity() {
+        Iterable<City> cities = cityService.findAll();
+        return new ResponseEntity<>(cities, HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
     public ResponseEntity<Iterable<City>> getAllCity(@RequestParam(required = false) String s) {
         String key = "%" + s + "%";
-        Iterable<City> cities;
-        if (!(key == null) && (key == "")) {
-            cities = cityService.searchByName(key);
-        } else {
-            cities = cityService.findAll();
-        }
+        Iterable<City> cities = cityService.searchByName(key);
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 

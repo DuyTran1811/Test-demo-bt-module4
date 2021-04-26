@@ -150,7 +150,7 @@ function showInFor(id) {
 function searchName() {
     let search = $('#search').val();
     $.ajax({
-        url: `/city/all?s=${search}`,
+        url: `/city/search?s=${search}`,
         type: 'GET',
         success: function (data) {
             console.log(data)
